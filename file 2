@@ -4,7 +4,9 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Canvas Background Image with Text</title>
-        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mr+Dafoe&display=swap" rel="stylesheet">
 
        
         <style>
@@ -16,6 +18,8 @@
 
             body{
                 text-align: center;
+               
+                 
             }
             canvas {
                 border-radius: 05px;
@@ -26,11 +30,17 @@
                 border: 1px solid rgba(255, 255, 255, 0.18);
                 width: 500px;
             }
+      
+            .tan {
+                font-family:'Mr Dafoe';     
+            }
 
-            /* .tan {
-                font-family:'Tangerine';
-                
-            } */
+            .f2{
+               font-family:'Tangerine';    
+            }
+
+           
+
 
             
         </style>
@@ -38,12 +48,16 @@
     <body>
         <canvas id="myCanvas" width="1200" height="1599"></canvas>
         <br />
-         <label for="textInput" class="tan">First Enter Text:</label>
+         <label for="textInput" class="tan"></label>
+         <label for="textInput" class="f2"></label>
         <label for="textInput">First Enter Text:</label>
-        <input type="text" id="textInput" />
+        <input type="text" id="textInput" value="Mr and Mrs Kumar"/>
 
          <label for="textInput" >Second Enter Text:</label>
-        <input type="text" id="sectextInput" />
+        <input type="text" id="sectextInput" value="Rahul"/>
+
+         <label for="textInput" >FiveEnter Text:</label>
+        <input type="text" id="fivetextInput" value="Kajal"/>
       
         <button id="downloadBtn">Download Image</button>
 
@@ -52,13 +66,19 @@
                 var canvas = document.getElementById("myCanvas");
                 var ctx = canvas.getContext("2d");
                 var textInput = document.getElementById("textInput");
-                 var sectextInput = document.getElementById("sectextInput");
+                var sectextInput = document.getElementById("sectextInput");
+                var fivetextInput = document.getElementById("fivetextInput");
         
                 var downloadBtn = document.getElementById("downloadBtn");
 
                 // Default text
                 var text = "Mr and Mrs Kumar";
-                var secText = "Pate"
+                var secText = "Rahul"
+                var thirdText = "REQUEST THE PREASURE OF YOUR PRESENCE TO"
+                var third2Text = "GRACE THE WEDDING OF";
+                var forthText = "&";
+                var fiveText = "Kajal"
+                var dateText = "MAY 24 | 2030";
 
                 // Base64 encoded image
                 var backgroundImage = new Image();
@@ -76,18 +96,29 @@
                 // Function to draw text on the canvas
                 function drawText() {
                     ctx.fillStyle = "#00284A";
-                    ctx.font = "600 60px Tangerine";
+                    ctx.font = "600 75px Tangerine";
                     ctx.textAlign = "center";
-                    ctx.fillText(text, 620, 440);
-                    ctx.font = "800 80px Tangerine";
-                    ctx.fillText(secText,800, 150 );
+                    ctx.fillText(text, 620, 460);
+                    ctx.font = "800 120px Mr Dafoe";
+                    ctx.fillText(secText,620, 730 );
+                    ctx.fillText(fiveText,620, 1000);
+                    ctx.fillStyle = "#993501"
+                    ctx.fillText(forthText,620, 850 );
+                    ctx.font = "600 26px Arial";
+                    ctx.textAlign = "center";
+                    ctx.fillStyle = "#993501"
+                    ctx.fillText(thirdText,620, 530);
+                    ctx.fillText(third2Text,620, 570);
+                    ctx.font = "Bold 60px serif";
+                     ctx.fillStyle = "#00284A"
+                    ctx.fillText(dateText,620, 1200);
+                     
                   
                 }
 
                 // Event listener for text input changes
                 textInput.addEventListener("input", function () {
                     text = textInput.value;
-
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
                     ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
                     drawText();
@@ -95,6 +126,14 @@
 
                  sectextInput.addEventListener("input", function () {
                     secText = sectextInput.value;
+
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
+                    drawText();
+                });
+
+                 fivetextInput.addEventListener("input", function () {
+                    fiveText = fivetextInput.value;
 
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
                     ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
