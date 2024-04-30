@@ -58,6 +58,12 @@
 
          <label for="textInput" >FiveEnter Text:</label>
         <input type="text" id="fivetextInput" value="Kajal"/>
+
+        <label for="textInput" >Date Text:</label>
+        <input type="text" id="dateInput" value="MAY 24 | 2030"/>
+
+          <label for="textInput" >Venue:</label>
+        <input type="text" id="venueInput" value="Diveagar, Maharashtra, India"/>
       
         <button id="downloadBtn">Download Image</button>
 
@@ -68,7 +74,8 @@
                 var textInput = document.getElementById("textInput");
                 var sectextInput = document.getElementById("sectextInput");
                 var fivetextInput = document.getElementById("fivetextInput");
-        
+                var datetextInput = document.getElementById("dateInput");
+                 var venueInput = document.getElementById("venueInput");
                 var downloadBtn = document.getElementById("downloadBtn");
 
                 // Default text
@@ -79,6 +86,7 @@
                 var forthText = "&";
                 var fiveText = "Kajal"
                 var dateText = "MAY 24 | 2030";
+                var venueText = "Diveagar, Maharashtra, India"
 
                 // Base64 encoded image
                 var backgroundImage = new Image();
@@ -109,6 +117,10 @@
                     ctx.fillStyle = "#993501"
                     ctx.fillText(thirdText,620, 530);
                     ctx.fillText(third2Text,620, 570);
+                    ctx.font = "600 34px Arial";
+                    ctx.fillStyle = "#00284A"
+                    ctx.fillText("Venue:",620, 1350);
+                    ctx.fillText(venueText,620, 1400);              
                     ctx.font = "Bold 60px serif";
                      ctx.fillStyle = "#00284A"
                     ctx.fillText(dateText,620, 1200);
@@ -126,7 +138,6 @@
 
                  sectextInput.addEventListener("input", function () {
                     secText = sectextInput.value;
-
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
                     ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
                     drawText();
@@ -134,7 +145,20 @@
 
                  fivetextInput.addEventListener("input", function () {
                     fiveText = fivetextInput.value;
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
+                    drawText();
+                });
 
+                datetextInput.addEventListener("input", function () {
+                    dateText = datetextInput.value;
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
+                    drawText();
+                });
+
+                venueInput.addEventListener("input", function () {
+                    venueText = venueInput.value;
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
                     ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
                     drawText();
