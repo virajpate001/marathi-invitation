@@ -39,13 +39,23 @@
             }
 
            
-
+          @media only screen and (max-width: 768px) {
+        
+                  .mainsec{
+                      padding:30px;
+                  }
+                   canvas{
+                       width:100%;
+                   }
+               }
+           }
 
             
         </style>
     </head>
     <body>
-        <canvas id="myCanvas" width="1200" height="1599"></canvas>
+        <div class="mainsec">
+          <canvas id="myCanvas" width="1200" height="1599"></canvas>
         <br />
          <label for="textInput" class="tan"></label>
          <label for="textInput" class="f2"></label>
@@ -65,6 +75,7 @@
         <input type="text" id="venueInput" value="Diveagar, Maharashtra, India"/>
       
         <button id="downloadBtn">Download Image</button>
+        </div>
 
         <script>
             window.onload = function () {
