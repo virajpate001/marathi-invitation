@@ -18,8 +18,7 @@
 
             body{
                 text-align: center;
-               
-                 
+                            
             }
             canvas {
                 border-radius: 05px;
@@ -50,8 +49,8 @@
         <br />
          <label for="textInput" class="tan"></label>
          <label for="textInput" class="f2"></label>
-        <label for="textInput">First Enter Text:</label>
-        <input type="text" id="textInput" value="Mr and Mrs Kumar"/>
+         <label for="textInput">First Enter Text:</label>
+         <input type="text" id="textInput" value="Mr and Mrs Kumar"/>
 
          <label for="textInput" >Second Enter Text:</label>
         <input type="text" id="sectextInput" value="Rahul"/>
@@ -62,7 +61,7 @@
         <label for="textInput" >Date Text:</label>
         <input type="text" id="dateInput" value="MAY 24 | 2030"/>
 
-          <label for="textInput" >Venue:</label>
+        <label for="textInput" >Venue:</label>
         <input type="text" id="venueInput" value="Diveagar, Maharashtra, India"/>
       
         <button id="downloadBtn">Download Image</button>
@@ -74,8 +73,8 @@
                 var textInput = document.getElementById("textInput");
                 var sectextInput = document.getElementById("sectextInput");
                 var fivetextInput = document.getElementById("fivetextInput");
-                var datetextInput = document.getElementById("dateInput");
-                 var venueInput = document.getElementById("venueInput");
+                var dateInput = document.getElementById("dateInput");
+                var venueInput = document.getElementById("venueInput");
                 var downloadBtn = document.getElementById("downloadBtn");
 
                 // Default text
@@ -107,69 +106,69 @@
                     ctx.font = "600 75px Tangerine";
                     ctx.textAlign = "center";
                     ctx.fillText(text, 620, 460);
+
                     ctx.font = "800 120px Mr Dafoe";
                     ctx.fillText(secText,620, 730 );
                     ctx.fillText(fiveText,620, 1000);
+
                     ctx.fillStyle = "#993501"
                     ctx.fillText(forthText,620, 850 );
+
                     ctx.font = "600 26px Arial";
                     ctx.textAlign = "center";
                     ctx.fillStyle = "#993501"
                     ctx.fillText(thirdText,620, 530);
                     ctx.fillText(third2Text,620, 570);
+
                     ctx.font = "600 34px Arial";
                     ctx.fillStyle = "#00284A"
                     ctx.fillText("Venue:",620, 1350);
-                    ctx.fillText(venueText,620, 1400);              
+                    ctx.fillText(venueText,620, 1400);    
+
                     ctx.font = "Bold 60px serif";
-                     ctx.fillStyle = "#00284A"
-                    ctx.fillText(dateText,620, 1200);
-                     
+                    ctx.fillStyle = "#00284A"
+                    ctx.fillText(dateText,620, 1200);                  
                   
                 }
 
                 // Event listener for text input changes
-                textInput.addEventListener("input", function () {
-                    text = textInput.value;
+                [textInput, sectextInput,fivetextInput,dateInput,venueInput].forEach(function(input) {
+              input.addEventListener("input", function () {
+            if (input.id === "textInput") {
+                text = input.value;
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
+                    drawText();
+            } else if (input.id === "sectextInput") {
+                secText = input.value;
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
+                    drawText();
+            } else if (input.id === "fivetextInput") {
+                 fiveText = input.value;
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
                     ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
                     drawText();
-                });
-
-                 sectextInput.addEventListener("input", function () {
-                    secText = sectextInput.value;
+            } else if (input.id === "dateInput") {
+                 dateText = input.value;
+                   ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
+                    drawText();
+            } else if (input.id === "venueInput") {
+                 venueText = input.value;
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
                     ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
                     drawText();
-                });
+            }
+            drawText();
+        });
+    });
 
-                 fivetextInput.addEventListener("input", function () {
-                    fiveText = fivetextInput.value;
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
-                    drawText();
-                });
-
-                datetextInput.addEventListener("input", function () {
-                    dateText = datetextInput.value;
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
-                    drawText();
-                });
-
-                venueInput.addEventListener("input", function () {
-                    venueText = venueInput.value;
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
-                    drawText();
-                });
-
-               
 
                 // Event listener for download button click
                 downloadBtn.addEventListener("click", function () {
                     var downloadLink = document.createElement("a");
-                    downloadLink.setAttribute("download", "canvas_image.png");
+                    downloadLink.setAttribute("download", "invitation.png");
                     downloadLink.setAttribute("href", canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"));
                     downloadLink.click();
                 });
